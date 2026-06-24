@@ -1,0 +1,96 @@
+#:kivy 1.0.9
+
+<UrlInputScreen>:
+
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 40
+        spacing: 20
+
+        Label:
+            text: 'Recipe Tin'
+            font_size: '32sp'
+            size_hint_y: 0.15
+
+        TextInput:
+            id: url_input
+            hint_text: 'Insert Recipe URL here...'
+            multiline: False
+            size_hint_y: 0.1
+
+        Button:
+            text: 'Enter'
+            size_hint_y: 0.1
+            on_release: root.submit_url()
+
+<RecipeCardScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 20
+        spacing: 10
+
+#    Fixed Header
+        Label:
+            id: recipe_title
+            text: 'Recipe Name:'
+            font_size: '24sp'
+            size_hint_y: 0.08
+            bold: True
+
+        Label:
+            id: recipe_meta
+            text: 'Time:  |  Yield: '
+            font_size: '14sp'
+            size_hint_y: 0.05
+
+        Label:
+            id: recipe_source
+            text: 'From the website:'
+            font_size: '13sp'
+            size_hint_y: 0.05
+
+#       Scrollable area
+        ScrollView:
+            size_hint_y: 0.75
+
+            GridLayout:
+                cols: 1
+                size_hint_y: None
+                height: self.minimum_height
+                spacing: 10
+                padding: 10
+
+                Label:
+                    text: 'Ingredients'
+                    font_size: '18sp'
+                    bold: True
+                    size_hint_y: None
+                    height: 40
+
+                Label:
+                    id: recipe_ingredients
+                    text: ''
+                    font_size: '14sp'
+                    size_hint_y: None
+                    height: self.texture_size[1]
+                    text_size: self.width, None
+
+                Label:
+                    text: 'Instructions'
+                    font_size: '18sp'
+                    bold: True
+                    size_hint_y: None
+                    height: 40
+
+                Label:
+                    id: recipe_instructions
+                    text: ''
+                    font_size: '14sp'
+                    line_height: 1.4
+                    markup: True
+                    size_hint_y: None
+                    height: self.texture_size[1]
+                    text_size: self.width, None
+
+
+
