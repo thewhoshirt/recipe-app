@@ -7,7 +7,6 @@ from recipe_scrapers import scrape_me
 def recipe_scraper(url):
     try:
         scraper = scrape_me(url)
-
         return scraper.to_json()
     except Exception as e:
         print(e)
