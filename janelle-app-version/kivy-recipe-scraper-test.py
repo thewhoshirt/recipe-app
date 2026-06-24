@@ -1,23 +1,13 @@
 from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
 
-import requests
-from recipe_scrapers import scrape_html
+from recipe_scrapers import scrape_me
 
 # gets recipe data from the url using recipe scraper library
 def recipe_scraper(url):
     try:
-        headers = {
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
-            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
-            "Accept-Language": "en-US,en;q=0.9",
-            "Referer": "https://www.google.com/",
-            "Connection": "keep-alive",
-        }
-        resp = requests.get(url, headers=headers, timeout=20)
-        resp.raise_for_status()
-        html = resp.text
-        scraper = scrape_html(html, org_url=url)
+        scraper = scrape_me(url)
+
         return scraper.to_json()
     except Exception as e:
         print(e)
