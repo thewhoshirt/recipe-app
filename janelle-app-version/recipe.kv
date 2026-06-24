@@ -1,0 +1,47 @@
+#:kivy 1.0.9
+
+<RecipeWidgets>
+    canvas.before:
+        Color:
+            rgba: 97/255, 80/255, 117/255, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    orientation:'vertical'
+    padding: [50,60]
+    spacing: 50
+
+
+    TextInput:
+        id: url_input
+        multiline: False
+        font_size: 20
+        size_hint_y: None
+        height: 35
+        size_hint_x: None
+        width: root.width - 100
+        hint_text: 'Enter recipe url'
+        on_text_validate: root.recipe_card()
+
+    BoxLayout:
+        orientation: 'vertical'
+        canvas:
+            Color:
+                rgba: 216/255, 204/255, 230/255, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        spacing: 20
+        size_hint_y: 1
+
+        ScrollView:
+            Label:
+                id: recipe_card
+                font_size: 30
+                size_hint_y: None
+                text_size: self.width, None
+                height: self.texture_size[1]
+                color: 0,0,0
+                padding: [10, 10]
+                line_height: 1.25
+
