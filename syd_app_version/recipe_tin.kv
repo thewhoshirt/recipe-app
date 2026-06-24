@@ -1,6 +1,13 @@
 #:kivy 1.0.9
+#:import get_color_from_hex kivy.utils.get_color_from_hex
 
 <UrlInputScreen>:
+    canvas.before:
+        Color:
+            rgba: get_color_from_hex('#b4adcc')
+        Rectangle:
+            pos: self.pos
+            size: self.size
 
     BoxLayout:
         orientation: 'vertical'
@@ -24,6 +31,13 @@
             on_release: root.submit_url()
 
 <RecipeCardScreen>:
+    canvas.before:
+        Color:
+            rgba: get_color_from_hex('#8ea6a6')
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
     BoxLayout:
         orientation: 'vertical'
         padding: 20
